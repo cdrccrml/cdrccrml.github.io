@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cedric Caremel - Academic Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom Light Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e0; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; 
+        }
+
+        /* Scoped scrollbar for the profile card */
+        .profile-scroll::-webkit-scrollbar-track {
+            background: #f3f4f6;
+            border-radius: 0.75rem;
+        }
+
+        .section-title {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: #111827;
+        }
+        .publication-category {
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.875rem;
+        }
+        .publication-entry {
+            margin-bottom: 1.25rem;
+            padding-left: 1rem;
+            border-left: 2px solid #cbd5e0;
+            color: #374151;
+            line-height: 1.6;
+        }
+        .author-highlight {
+            font-weight: 600;
+            color: #111827;
+        }
+        .venue {
+            font-style: italic;
+            color: #4b5563;
+        }
+        
+        /* Unified style for all research images: fixed width, left-aligned, no cropping */
+        .landscape-img, .boxy-img {
+            width: 100%;
+            max-width: 320px; /* Fixed, uniform width, not too large */
+            height: auto;     /* Preserves natural aspect ratio, prevents cropping */
+            border-radius: 0.5rem;
+            margin: 0 0 0.75rem 0; /* Left-aligned */
+            display: block;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Wider landscape image variant */
+        .landscape-img-wide {
+            width: 100%;
+            max-width: 520px; /* Increased from 320px; adjust this value as needed */
+            height: auto;     /* Preserves natural aspect ratio */
+            border-radius: 0.5rem;
+            margin: 0 0 0.75rem 0; /* Keeps it left-aligned like your others */
+            display: block;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .theme-section {
+            margin-bottom: 3.5rem;
+        }
+    </style>
+    <script>
+        // Smart fallback to handle both .jpg and .png images automatically
+        function handleImageError(img, fallbackText) {
+            if (!img.dataset.triedFallback) {
+                img.dataset.triedFallback = "true";
+                // If it was trying a .jpg, swap to .png (and vice versa)
+                if (img.src.includes('.jpg')) {
+                    img.src = img.src.replace('.jpg', '.png');
+                } else if (img.src.includes('.png')) {
+                    img.src = img.src.replace('.png', '.jpg');
+                }
+            } else {
+                // If both formats fail, use the placeholder
+                img.src = 'https://placehold.co/800x400/e2e8f0/4a5568?text=' + encodeURIComponent(fallbackText);
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-gray-200 selection:text-gray-900">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-gray-900 tracking-tight">Cedric Caremel</div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#vision" class="text-gray-500 hover:text-gray-900 transition-colors">Vision</a>
+                <a href="#research" class="text-gray-500 hover:text-gray-900 transition-colors">Research</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+            <a href="#vision" class="block py-3 px-6 text-sm hover:bg-gray-50">Vision</a>
+            <a href="#research" class="block py-3 px-6 text-sm hover:bg-gray-50">Research</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 max-w-7xl">
+        <div class="flex flex-col lg:flex-row lg:gap-x-12">
+            
+            <aside class="lg:w-1/3 mb-12 lg:mb-0">
+                <div id="profile" class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto profile-scroll rounded-xl shadow-sm border border-gray-200 bg-white">
+                    <div class="p-8 min-h-full">
+                        <div class="text-center mb-6">
+                            <img src="cedric.jpg" alt="Cedric Caremel" class="rounded-full w-32 h-32 mx-auto object-cover shadow-sm border-2 border-gray-100" onerror="handleImageError(this, 'C.C')">
+                        </div>
+                        <div>
+                            <h1 class="text-2xl font-bold text-gray-900 mb-2 text-center">Cedric Caremel, Ph.D.</h1>
+                            <p class="text-sm font-semibold text-gray-600 mb-4 text-center">Project Research Associate / Project Assistant Professor</p>
+                            <p class="text-sm text-gray-600 leading-relaxed text-center mb-6">
+                                The University of Tokyo, Graduate School of Engineering,<br>
+                                Department of Electrical Engineering and Information Systems,<br>
+                                Kawahara Laboratory
+                            </p>
+                            
+                            <hr class="my-6 border-gray-100">
+
+                            <div class="space-y-5 text-sm text-gray-600 leading-relaxed">
+                                <div>
+                                    <strong class="text-gray-900 block mb-1">Education</strong>
+                                    Ph.D. 2019, Media Design in Science and Engineering, Keio University, KMD Graduate School.<br>
+                                    <span class="italic text-gray-500 mt-1 block">Thesis: "Neuromorphic networks for prediction applications"</span>
+                                </div>
+                                
+                                <div>
+                                    <strong class="text-gray-900 block mb-2">Background & Achievements</strong>
+                                    <ul class="list-disc pl-4 space-y-2 marker:text-gray-400">
+                                        <li>Research training at RIKEN CBS (Center for Brain Science, Benucci Lab, Neural Circuits and Behavior), focusing on using ANNs (artificial neural networks) to model large biological neural networks acquired via optical imaging and optogenetics.</li>
+                                        <li>Former Research Engineer at Takram (innovation firm), specializing in XR (VR/AR/MR) hardware, software, and 3D content for major Japanese corporations (Sony, Toyota).</li>
+                                        <li>Lead Engineer of the Keio’s Hyperloop Alpha team for the 2017 competition (finals) organized by SpaceX in Los Angeles, USA.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="lg:w-2/3">
+                
+                <section id="vision" class="mb-16 scroll-mt-24">
+                    <h2 class="text-3xl font-bold section-title">Future Vision & Leadership</h2>
+                    <div class="space-y-4 text-gray-700 leading-relaxed text-justify">
+                        <p>
+                            My long-term academic vision is to bridge the gap between fundamental principles and next-generation computational paradigms. 
+                            By leveraging unconventional substrates, ranging from hysteretic materials to fluid dynamics, my objective is to pioneer embodied intelligence systems and optimize for energy efficiency, adaptability, and form-factor so as to overcome the limitations of traditional silicon-based architectures.
+                        </p>
+                        <p>
+                            Concurrently, my research in generative design, applied electromagnetics, and machine perception aims to seamlessly integrate these novel computational mechanisms into real-world engineering applications. 
+                            I am deeply committed to leading interdisciplinary research initiatives that translate theoretical breakthroughs into scalable hardware technologies, such as in autonomous robotics and 3D visualization technologies. 
+                            Through dedicated mentorship and cross-institutional collaborations, my goal is to cultivate a dynamic "research and deployment" ecosystem that empowers the next generation of scientists and innovators to build impactful, human-centric technologies.
+                        </p>
+                    </div>
+                </section>
+
+                <section id="patents" class="mb-16 scroll-mt-24">
+                    <h2 class="text-3xl font-bold section-title">Patents</h2>
+                    <div class="space-y-4">
+                        <div class="publication-entry">
+                            <strong class="text-gray-900 block text-lg mb-1">Multiview 3D Display Technology</strong>
+                            <span class="block text-gray-600">Patent filed via the University of Tokyo's TLO. Details currently undisclosed pending publication.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="research" class="mb-16 scroll-mt-24">
+                    <h2 class="text-3xl font-bold section-title">Research Streams & Publications</h2>
+                    
+                    <div class="theme-section">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Neuromorphic Networks</h3>
+                        <p class="text-gray-600 mb-6">Generalizing physical mechanisms for computation and actuator control.</p>
+                        
+                        <img src="image4.jpg" alt="Hysteretic Reservoir" class="landscape-img" onerror="handleImageError(this, 'Neuromorphic Networks')">
+                        <p class="text-sm italic text-gray-500 mb-6">Hysteretic reservoir dynamics</p>
+                        
+                        <div class="publication-category">Journals & Conferences</div>
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>, Y. Kawahara, and K. Nakajima. "Hysteretic reservoir." <span class="venue">Physical Review Applied (APS)</span>, 22, 064045, 2024.
+                            
+                            <div class="mt-3 text-sm text-gray-700 bg-gray-50 p-4 rounded-md border border-gray-200 shadow-sm">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                                    <strong class="text-gray-900">Code Repository:</strong> 
+                                    <a href="https://github.com/KawaharaLab/PhysRes" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline font-medium">KawaharaLab/PhysRes</a>
+                                </div>
+                                <p class="leading-relaxed text-gray-600">
+                                    <span class="font-semibold text-gray-800">PhysRes</span> is an open-source, extensible framework designed to tackle the prediction of complex time-series data and control the behavior of soft actuators using the paradigms of physical reservoir computing.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>, K. Nguyen, A. Nguyen, M. Huber, Y. Kawahara, and T. D. Ta. "Modeling The States of Liquid Phase Change Pouch Actuators by Reservoir Computing." <span class="venue">IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)</span>, Hangzhou, China, Oct. 2025.
+                        </div>
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>. "Generalizing hysteretic circuits to chaotic circuits as physical reservoir computers." <span class="venue">Differential Equations for Data Science (DEDS 2025)</span>, Kyoto, Japan, Feb. 2025.
+                        </div>
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>, Y. Kawahara, and K. Nakajima. "A novel framework for physical reservoir computing." <span class="venue">Dynamics of multicellular systems and applications in machine learning (MCML 2024)</span>, Kanazawa, Japan, Oct. 2024.
+                        </div>
+
+                        <div class="publication-category">Work-in-Progress</div>
+                        <div class="publication-entry text-gray-600">
+                            <strong class="text-gray-800">Liquid Reservoir Computing:</strong> Ongoing research with Prof. Hirofumi Notsu and Dr. Thomas de Jong on modeling the hydrodynamics of vortices for computation.
+                        </div>
+                        <div class="publication-entry text-gray-600">
+                            <strong class="text-gray-800">Physical Reservoir Computing For Soft Actuators:</strong> On-going research with Liu Fante (Master Course student, Kawahara lab) on leveraging and extending the PhysRes framework with the aim of controlling soft actuators behavior.
+                        </div>
+                    </div>
+
+                    <div class="theme-section">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Soft Robotics, Sensors & Actuators</h3>
+                        <p class="text-gray-600 mb-6">Developing frameworks, models and advanced control systems for enhanced robotic interaction and signal processing tasks.</p>
+                        
+                        <img src="image3.jpg" alt="Soft Robotics" class="landscape-img" onerror="handleImageError(this, 'Soft Robotics')">
+                        <p class="text-sm italic text-gray-500 mb-6">Soft robotics and smart materials</p>
+                        
+                        <div class="publication-category">Journals & Conferences</div>
+                        
+                        <img src="image5.jpg" alt="Journal of Robotics and Mechatronics Publication" class="landscape-img-wide mt-8" onerror="handleImageError(this, 'Echo State Network')">
+                        <p class="text-sm italic text-gray-500 mb-4">Echo state network for soft actuator control</p>
+                        
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>, M. Ishige, T. D. Ta, and Y. Kawahara. "Echo State Network for Soft Actuator Control." <span class="venue">Journal of Robotics and Mechatronics, Special Issue on Science of Soft Robots</span>, Vol. 34, No. 2, Tokyo, Japan, Apr. 2022.
+                        </div>
+                        <div class="publication-entry">
+                            Z. Chen, <span class="author-highlight">C. Caremel</span>, and Y. Kawahara. "A Simulation Study on Temperature Control of a SMA-based Ring-actuated Glove for Thermal Comfort." <span class="venue">IPSJ Technical Report</span>, 2022-UBI-76, No. 35, pp. 1-6, Nov. 2022.
+                        </div>
+
+                        <img src="image6.jpg" alt="UbiComp 2018 Publication" class="landscape-img-wide mt-10" onerror="handleImageError(this, 'Shape Memory Alloy')">
+                        <p class="text-sm italic text-gray-500 mb-4">Shape memory alloy wire actuators</p>
+                        
+                        <div class="publication-entry">
+                            G. Chernyshov, B. Tag, <span class="author-highlight">C. Caremel</span>, F. Cao, G. Liu, and K. Kunze. "Shape memory alloy wire actuators for soft, wearable haptic devices." <span class="venue">ACM International Joint Conference on Pervasive and Ubiquitous Computing (UbiComp 2018)</span>, pp. 112-119, Singapore, Oct. 2018.
+                        </div>
+                    </div>
+
+                    <div class="theme-section">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">HCI, Generative Models & Machine Learning</h3>
+                        <p class="text-gray-600 mb-6">Exploring next-generation interactive XR systems, machine learning models applied to electromagnetics for wireless power, and autonomous machine perception.</p>
+                        
+                        <img src="image2.jpg" alt="Innovative Displays and Graphics" class="landscape-img" onerror="handleImageError(this, 'Innovative Displays')">
+                        <p class="text-sm italic text-gray-500 mb-6">Innovative displays and generative design</p>
+                        
+                        <div class="publication-category">Journals & Conferences</div>
+                        <div class="publication-entry">
+                            S. Feng, <span class="author-highlight">C. Caremel</span>, and Y. Kawahara. "Diffusion-Model-Based Topology Optimization Using Hand-Drawn Inputs as Condition Constraints." <span class="venue">Proceedings of the 2026 ACM Conference on Human Factors in Computing Systems (CHI ’26)</span>, To Appear, Apr. 2026.
+                        </div>
+                        <div class="publication-entry">
+                            Y. Li, R. Takahashi, W. Yukita, K. Matsutani, <span class="author-highlight">C. Caremel</span>, Y. Iwamoto, S. Lee, T. Yokota, T. Someya, and Y. Kawahara. "Plug-n-play e-knit: prototyping large-area e-textiles using machine-knitted magnetically-repositionable sensor networks." <span class="venue">Proceedings of the Nineteenth International Conference on Tangible, Embedded, and Embodied Interaction (TEI '25)</span>, Article 56, pp. 1–7, Bordeaux, France, Mar. 2025.
+                        </div>
+
+                        <img src="image9.jpg" alt="Thermo-haptic feedback" class="boxy-img mt-10" onerror="handleImageError(this, 'Thermo-haptics')">
+                        <p class="text-sm italic text-gray-500 mb-4">Thermo-haptic feedback interface</p>
+                        
+                        <div class="publication-entry">
+                            G. Chernyshov, K. Ragozin, <span class="author-highlight">C. Caremel</span>, and K. Kunze. "Hand motion prediction for just-in-time thermo-haptic feedback." <span class="venue">ACM Symposium on Virtual Reality Software and Technology (VRST 2018)</span>, 52:1-52:2, Tokyo, Japan, Nov. 2018.
+                        </div>
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>, G. Liu, G. Chernyshov, and K. Kunze. "Muscle-Wire Glove: Pressure-Based Haptic Interface." <span class="venue">Intelligent User Interfaces (IUI) Companion 2018</span>, 52:1-52:2, Tokyo, Japan, Mar. 2018.
+                        </div>
+
+                        <div class="publication-category mt-10">Applied Electromagnetics</div>
+                        <div class="publication-entry">
+                            Y. Honjo, <span class="author-highlight">C. Caremel</span>, K. Takaki, Y. Noma, Y. Kawahara, and T. Sasatani. "Magnetic field estimation using Gaussian process regression for interactive wireless power system design." <span class="venue">arXiv preprint</span>.
+                        </div>
+                        <div class="publication-entry">
+                            Y. Honjo, <span class="author-highlight">C. Caremel</span>, Y. Kawahara, and T. Sasatani. "Suppressing Leakage Magnetic Field in Wireless Power Transfer using Halbach Array-Based Resonators." <span class="venue">IEEE Antennas and Wireless Propagation Letters</span>, Vol. 23, Issue 1, pp. 94-98, Jan. 2024.
+                        </div>
+                        <div class="publication-entry">
+                            Y. Honjo, <span class="author-highlight">C. Caremel</span>, Y. Noma, K. Takaki, Y. Kawahara, and T. Sasatani. "Magnetic Field Prediction for Wireless Power Transfer Systems Using Gaussian Process Regression." <span class="venue">IEICE Tech. Rep.</span>, Sapporo, Japan, Nov. 2024.
+                        </div>
+                        <div class="publication-entry">
+                            Y. Honjo, T. Sasatani, <span class="author-highlight">C. Caremel</span>, and Y. Kawahara. "A Halbach-Array-Based Resonator for Suppressing Leakage Magnetic Field in Wireless Power Transfer Systems." <span class="venue">Asian Wireless Power Transfer Workshop (AWPT 2022)</span>, MO-3-O4, Kyoto, Japan, Dec. 2022.
+                        </div>
+
+                        <div class="publication-category mt-10">Work-in-Progress</div>
+                        <div class="publication-entry text-gray-600">
+                            <strong class="text-gray-800">Monocular Depth Estimation And Generative Models For 3D Reconstruction:</strong> Collaborative project with Xinyu Li (Master Course) and Shuyue Feng (Doctoral Program) focusing on novel techniques for image generation and 3D modeling.
+                        </div>
+                    </div>
+
+                    <div class="theme-section">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Autonomous Systems & Machine Perception</h3>
+                        
+                        <img src="image1.jpg" alt="Autonomous Systems" class="landscape-img mt-6" onerror="handleImageError(this, 'Autonomous Systems')">
+                        <p class="text-sm italic text-gray-500 mb-6">Autonomous systems for data acquisition</p>
+                        
+                        <div class="publication-entry">
+                            C. Han, <span class="author-highlight">C. Caremel</span>, K. Taniguchi, H. Murakami, K. Koike, K. Higashioka, Y. Toshima, Y. Akashi, and Y. Kawahara. "Acquisition and Visualization of HVAC Data by Autonomous Mobile Robots." <span class="venue">Proceedings of the 30th CAADRIA Conference</span>, Vol. 3, pp. 29-38, Tokyo, Japan, Mar. 2025.
+                        </div>
+
+                        <!-- <img src="image8.jpg" alt="Neural Network-Assisted Semantic Segmentation Of Vegetation" class="boxy-img mt-10" onerror="handleImageError(this, 'Semantic Segmentation')">
+                        <p class="text-sm italic text-gray-500 mb-4">Semantic segmentation of vegetation</p> -->
+                        
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>, W. Guo, K. Senda, D. Takada, K. Tsubouchi, and Y. Kawahara. "Neural Network-Assisted Semantic Segmentation Of Vegetation Via Close-Range Remote Sensing." <span class="venue">Japan Geoscience Union Meeting (JpGU)</span>, Tokyo, Japan, May 2022.
+                        </div>
+                    </div>
+
+                    <div class="theme-section">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Dissertation</h3>
+                        <div class="publication-entry">
+                            <span class="author-highlight">C. Caremel</span>. "Neuromorphic networks for prediction applications." <span class="venue">Doctoral dissertation, Keio University</span>, Keio Associated Repository of Academic Resources, Tokyo, Japan, Aug. 2019.
+                        </div>
+                    </div>
+                </section>
+
+                <section id="teaching" class="mb-16 scroll-mt-24">
+                    <h2 class="text-3xl font-bold section-title">Teaching & Workshops</h2>
+                    <div class="space-y-6">
+                        <div class="publication-entry">
+                            <strong class="text-gray-900 block text-lg mb-1">Data-Driven Space Design for Co-Creation (2024–2026)</strong>
+                            <span class="block text-gray-600">Series of lectures for the workshop organized by Prof. Taniguchi.<br>
+                            <span class="venue">Department of Architecture, Graduate School of Engineering, The University of Tokyo</span></span>
+                        </div>
+                        <div class="publication-entry">
+                            <strong class="text-gray-900 block text-lg mb-1">Computational Fabrication (Upcoming)</strong>
+                            <span class="block text-gray-600">Upcoming workshop focusing on computational fabrication and generative design methodologies.</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="academic-activities" class="mb-16 scroll-mt-24">
+                    <h2 class="text-3xl font-bold section-title">Academic Activities</h2>
+                    <ul class="list-disc pl-5 space-y-3 text-gray-700 marker:text-gray-400">
+                        <li>Reviewer for <em>Scientific Reports</em> (Nature Portfolio)</li>
+                        <li>Reviewer for <em>IMWUT (Interactive, Mobile, Wearable and Ubiquitous Technologies)</em></li>
+                        <li>Reviewer for <em>IEEE ISMAR (International Symposium on Mixed and Augmented Reality)</em></li>
+                        <li>Reviewer for <em>IEEE/ASME Transactions on Mechatronics</em></li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white mt-12 border-t border-gray-200">
+        <div class="container mx-auto px-6 py-6 text-center text-sm text-gray-500">
+            &copy; 2026 Cedric Caremel | The University of Tokyo
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden'); // Close mobile menu on click
+                }
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if(targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
