@@ -63,25 +63,23 @@
             color: #4b5563;
         }
         
-        /* Unified style for all research images: fixed width, left-aligned, no cropping */
         .landscape-img, .boxy-img {
             width: 100%;
-            max-width: 320px; /* Fixed, uniform width, not too large */
-            height: auto;     /* Preserves natural aspect ratio, prevents cropping */
+            max-width: 320px; 
+            height: auto;     
             border-radius: 0.5rem;
-            margin: 0 0 0.75rem 0; /* Left-aligned */
+            margin: 0 0 0.75rem 0; 
             display: block;
             border: 1px solid #e5e7eb;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* Wider landscape image variant */
         .landscape-img-wide {
             width: 100%;
-            max-width: 520px; /* Increased from 320px; adjust this value as needed */
-            height: auto;     /* Preserves natural aspect ratio */
+            max-width: 520px; 
+            height: auto;     
             border-radius: 0.5rem;
-            margin: 0 0 0.75rem 0; /* Keeps it left-aligned like your others */
+            margin: 0 0 0.75rem 0; 
             display: block;
             border: 1px solid #e5e7eb;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -92,18 +90,15 @@
         }
     </style>
     <script>
-        // Smart fallback to handle both .jpg and .png images automatically
         function handleImageError(img, fallbackText) {
             if (!img.dataset.triedFallback) {
                 img.dataset.triedFallback = "true";
-                // If it was trying a .jpg, swap to .png (and vice versa)
                 if (img.src.includes('.jpg')) {
                     img.src = img.src.replace('.jpg', '.png');
                 } else if (img.src.includes('.png')) {
                     img.src = img.src.replace('.png', '.jpg');
                 }
             } else {
-                // If both formats fail, use the placeholder
                 img.src = 'https://placehold.co/800x400/e2e8f0/4a5568?text=' + encodeURIComponent(fallbackText);
             }
         }
@@ -199,7 +194,7 @@
                 </section>
 
                 <section id="research" class="mb-16 scroll-mt-24">
-                    <h2 class="text-3xl font-bold section-title">Research Streams & Publications</h2>
+                    <h2 class="text-3xl font-bold section-title">Selected Research Streams & Publications</h2>
                     
                     <div class="theme-section">
                         <h3 class="text-2xl font-bold text-gray-900 mb-2">Neuromorphic Networks</h3>
@@ -277,9 +272,11 @@
                         <p class="text-sm italic text-gray-500 mb-6">Innovative displays and generative design</p>
                         
                         <div class="publication-category">Journals & Conferences</div>
+                        
                         <div class="publication-entry">
-                            S. Feng, <span class="author-highlight">C. Caremel</span>, and Y. Kawahara. "Diffusion-Model-Based Topology Optimization Using Hand-Drawn Inputs as Condition Constraints." <span class="venue">Proceedings of the 2026 ACM Conference on Human Factors in Computing Systems (CHI ’26)</span>, To Appear, Apr. 2026.
+                            S. Feng, <span class="author-highlight">C. Caremel</span>, and Y. Kawahara. "Sketch2Topo: Diffusion-Model-Based Topology Optimization Using Hand-Drawn Inputs as Condition Constraints." <span class="venue">In Proceedings of the Extended Abstracts of the 2026 CHI Conference on Human Factors in Computing Systems (CHI EA '26)</span>, Article 599, pp. 1–5, New York, NY, USA, Apr. 2026.
                         </div>
+                        
                         <div class="publication-entry">
                             Y. Li, R. Takahashi, W. Yukita, K. Matsutani, <span class="author-highlight">C. Caremel</span>, Y. Iwamoto, S. Lee, T. Yokota, T. Someya, and Y. Kawahara. "Plug-n-play e-knit: prototyping large-area e-textiles using machine-knitted magnetically-repositionable sensor networks." <span class="venue">Proceedings of the Nineteenth International Conference on Tangible, Embedded, and Embodied Interaction (TEI '25)</span>, Article 56, pp. 1–7, Bordeaux, France, Mar. 2025.
                         </div>
@@ -324,9 +321,6 @@
                             C. Han, <span class="author-highlight">C. Caremel</span>, K. Taniguchi, H. Murakami, K. Koike, K. Higashioka, Y. Toshima, Y. Akashi, and Y. Kawahara. "Acquisition and Visualization of HVAC Data by Autonomous Mobile Robots." <span class="venue">Proceedings of the 30th CAADRIA Conference</span>, Vol. 3, pp. 29-38, Tokyo, Japan, Mar. 2025.
                         </div>
 
-                        <!-- <img src="image8.jpg" alt="Neural Network-Assisted Semantic Segmentation Of Vegetation" class="boxy-img mt-10" onerror="handleImageError(this, 'Semantic Segmentation')">
-                        <p class="text-sm italic text-gray-500 mb-4">Semantic segmentation of vegetation</p> -->
-                        
                         <div class="publication-entry">
                             <span class="author-highlight">C. Caremel</span>, W. Guo, K. Senda, D. Takada, K. Tsubouchi, and Y. Kawahara. "Neural Network-Assisted Semantic Segmentation Of Vegetation Via Close-Range Remote Sensing." <span class="venue">Japan Geoscience Union Meeting (JpGU)</span>, Tokyo, Japan, May 2022.
                         </div>
@@ -376,19 +370,17 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 if(mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden'); // Close mobile menu on click
+                    mobileMenu.classList.add('hidden'); 
                 }
                 const targetElement = document.querySelector(this.getAttribute('href'));
                 if(targetElement) {
